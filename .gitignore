@@ -1,2 +1,8 @@
 # ignored files
 /.idea/
+__pycache__/
+*.pyc
+*.pyo
+*.DS_Store
+.venv/
+.env
