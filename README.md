@@ -80,7 +80,7 @@ Tip: To see tooltips, enable ComfyUI Settings -> Nodes -> Enable Tooltips.
 - metadata_mode: `replace`
 - metadata_json:
 ```json
-{"author":"AIxFun eStudio","project":"Flux-Kontext","modelspec.architecture":"sdxl"}
+{"author":"author","project":"Flux-Kontext","modelspec.architecture":"sdxl"}
 ```
 - Result: header contains exactly those keys.
 
