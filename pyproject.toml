@@ -1,6 +1,6 @@
 [project]
 name = "save-checkpoint-with-metadata"
-version = "0.1.0"
+version = "0.2.0"
 description = "ComfyUI custom node: save .safetensors with custom metadata and smart filename modes."
 readme = "README.md"
 requires-python = ">=3.10"
