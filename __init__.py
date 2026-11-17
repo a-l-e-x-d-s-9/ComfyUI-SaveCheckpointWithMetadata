@@ -5,6 +5,18 @@ import folder_paths
 import comfy.sd
 
 
+class _MaterializedCLIP:
+    def __init__(self, clip):
+        self.clip = clip
+
+    def load_model(self):
+        return self.clip.load_model()
+
+    def state_dict_for_saving(self):
+        # SDXL's Q/K/V conversion needs real tensors, not lazy patcher exports.
+        return {k: v.to("cpu") for k, v in self.clip.state_dict_for_saving().items()}
+
+
 class SaveCheckpointWithMetadata:
     """
     Save a checkpoint with explicit control over safetensors metadata.
@@ -171,7 +183,7 @@ class SaveCheckpointWithMetadata:
         comfy.sd.save_checkpoint(
             save_path,
             model,
-            clip=clip,
+            clip=_MaterializedCLIP(clip) if clip is not None else None,
             vae=vae,
             clip_vision=clip_vision,
             metadata=final_meta,
